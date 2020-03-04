@@ -10,6 +10,8 @@ export class ClevelandArtService {
   constructor(private http: HttpClient) { }
 
   getArtwork(): Observable<any> {
-    return this.http.get('https://openaccess-api.clevelandart.org/api/artworks/?type=Painting&department=Chinese Art&limit=100');
+    return this.http.get('https://openaccess-api.clevelandart.org/api/artworks/?type=Painting&department=Japanese Art&limit=200');
   }
 }
+
+// API documentation at: http://openaccess-api.clevelandart.org/

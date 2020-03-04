@@ -12,31 +12,25 @@ import { nextContext } from '@angular/core/src/render3';
 export class DisplayArtComponent implements OnInit {
 
   artData: [];
-  imageUrl: string;
+  imageUrl = './assets/cmalogo.png';
 
   constructor(private clevelandArtService: ClevelandArtService) { }
 
   ngOnInit() {
     this.clevelandArtService.getArtwork()
       .subscribe(response => {
+        // take the server response and copy the array of image data to artData
         this.artData = response.data;
+        // explicitly show a first image instead of waiting for the
+        // setInternal below to fire for the first time
         this.next();
       });
-      setInterval(() => this.next(), 1000 * 60);
+      setInterval(() => this.next(), 1000 * 60 * 2);
   }
 
   next(): void {
-    // TODO: check and handle case where there's no 'print' property
-    // if there's image, remove the entry from artData
     this.imageUrl = this.artData[Math.floor(Math.random() * this.artData.length)]['images']['print']['url'];
-    // console.log('currentArt: ', this.imageUrl);
-  }
-
-  clickEvent(): void {
-    console.log("Click");
   }
 }
 
-// TODO: add click event that loads a new image
-// TODO: pop an image out of the artData array when it has been displayed
-// TODO: when the artData array is empty, refill with new images (skip parameter)
+
