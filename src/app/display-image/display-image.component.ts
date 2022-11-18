@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Console } from 'console';
-import { response } from 'express';
+
 import { ClevelandArtReply } from '../cleveland-art-reply';
 import { ClevelandArtService } from '../cleveland-art.service';
 
